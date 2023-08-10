@@ -3,10 +3,10 @@ Install Robot Operating System (ROS) on NVIDIA Jetson AGX Xavier
 
 These scripts will install Robot Operating System (ROS) on the NVIDIA Jetson AGX Xavier Developer Kit.
 
-For L4T 31.0.2 (JetPack 4.1)
+For L4T 35.4.1 (JetPack 5.1.2)
 
 
-The script is based on the Ubuntu ARM install of ROS Melodic: http://wiki.ros.org/melodic/Installation/Ubuntu
+The script is based on the Ubuntu ARM install of ROS Melodic: http://wiki.ros.org/noetic/Installation/Ubuntu
 
 Maintainer of ARM builds for ROS is http://answers.ros.org/users/1034/ahendrix/
 
@@ -18,16 +18,16 @@ Usage: ./installROS.sh  [[-p package] | [-h]]
  -p | --package &lt;packagename&gt;  ROS package to install
                                Multiple Usage allowed
                                The first package should be a base package. One of the following:
-                                 ros-melodic-ros-base
-                                 ros-melodic-desktop
-                                 ros-melodic-desktop-full
+                                 ros-noetic-ros-base
+                                 ros-noetic-desktop
+                                 ros-noetic-desktop-full
  </pre>
  
-Default is ros-melodic-ros-base if no packages are specified.
+Default is ros-noetic-ros-base if no packages are specified.
 
 Example Usage:
 
-$ ./installROS.sh -p ros-melodic-desktop -p ros-melodic-rgbd-launch
+$ ./installROS.sh -p ros-noetic-desktop -p ros-noetic-rgbd-launch
 
 This script installs a baseline ROS environment. There are several tasks:
 
@@ -35,7 +35,7 @@ This script installs a baseline ROS environment. There are several tasks:
 <li>Enable repositories universe, multiverse, and restricted</li>
 <li>Adds the ROS sources list</li>
 <li>Sets the needed keys</li>
-<li>Loads specified ROS packages, defaults to ros-melodic-base-ros if none specified</li>
+<li>Loads specified ROS packages, defaults to ros-noetic-base-ros if none specified</li>
 <li>Initializes rosdep</li>
 </ul>
 
@@ -56,6 +56,10 @@ $ sudo apt-key del 421C365BD9FF1F717815A3895523BAEEB01FA116
 
 
 ## Release Notes
+<strong>Aug 2023</strong>
+* L4T 35.4.1
+* Change to support Noetic
+
 <strong>June 2019</strong>
 * L4T 31.0.2
 * Update ROS GPG Key
@@ -68,7 +72,7 @@ $ sudo apt-key del 421C365BD9FF1F717815A3895523BAEEB01FA116
 ## License
 MIT License
 
-Copyright (c) 2017-2018 Jetsonhacks
+Copyright (c) 2017-2023 Jetsonhacks, Aru
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
