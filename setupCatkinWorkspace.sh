@@ -58,6 +58,7 @@ function setup_enviroments()
   grep -q -F ' ROS_MASTER_URI' ~/.bashrc ||  echo 'export ROS_MASTER_URI=http://localhost:11311' | tee -a ~/.bashrc
   grep -q -F ' ROS_IP' ~/.bashrc ||  echo "export ROS_IP=$(hostname -I)" | tee -a ~/.bashrc
   echo "export LD_LIBRARY_PATH=/usr/local/lib:$LD_LIBRARY_PATH" >> ~/.bashrc
+  source ~/.bashrc
 }
 
 
@@ -76,7 +77,7 @@ DEFAULTDIR=~/catkin_ws
 CLDIR="$1"
 
 if [ ! -z "$CLDIR" ]; then 
- DEFAULTDIR=~/"$CLDIR"
+  DEFAULTDIR=~/"$CLDIR"
 fi
 if [ -e "$DEFAULTDIR" ] ; then
   error_exit "$DEFAULTDIR already exists; No action taken."
@@ -86,10 +87,10 @@ fi
 
 
 #setup ROS Workspace
-setup_workspace | script_print_error "Setup ROS workspace failed."
+setup_workspace || script_print_error "Setup ROS workspace failed."
 
 #setup ROS Environment variables
-setup_enviroments | script_print_error "Setup ROS environment failed."
+setup_enviroments || script_print_error "Setup ROS environment failed."
 
 script_print "The Catkin Workspace has been created.\n"
 script_print "Please modify the placeholders for ROS_MASTER_URI and ROS_IP placed into the file ${HOME}/.bashrc\n"

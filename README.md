@@ -6,7 +6,7 @@ These scripts will install Robot Operating System (ROS) on the NVIDIA Jetson AGX
 For L4T 35.4.1 (JetPack 5.1.2)
 
 
-The script is based on the Ubuntu ARM install of ROS Melodic: http://wiki.ros.org/noetic/Installation/Ubuntu
+The script is based on the Ubuntu ARM install of ROS Noetic: http://wiki.ros.org/noetic/Installation/Ubuntu
 
 Maintainer of ARM builds for ROS is http://answers.ros.org/users/1034/ahendrix/
 

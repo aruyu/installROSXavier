@@ -51,7 +51,7 @@ function error_exit()
 function usage()
 {
   echo "Usage: ./installROS.sh [[-p package] | [-h]]"
-  echo "Install ROS Melodic"
+  echo "Install ROS Noetic"
   echo "Installs ros-noetic-ros-base as default base package; Use -p to override"
   echo "-p | --package <packagename>  ROS package to install"
   echo "                              Multiple usage allowed"
@@ -172,9 +172,9 @@ done
 # Check to see if other packages were specified
 # If not, set the default base package
 if [ ${#packages[@]}  -eq 0 ] ; then
- packages+="ros-noetic-ros-base"
+  packages+="ros-noetic-ros-base"
 fi
-echo "Packages to install: "${packages[@]}
+script_print_notify "Packages to install: "${packages[@]}"\n"
 # Check to see if we have a ROS base kinda thingie
 hasBasePackage=false
 for package in "${packages[@]}"; do
@@ -195,10 +195,10 @@ if [ $hasBasePackage == false ] ; then
 fi
 
 # Let's start installing!
-setup_repo | script_print_error "Setup repository failed."
+setup_repo || script_print_error "Setup repository failed."
 
 # ROS Installation
-install_ros | script_print_error "ROS installation failed."
+install_ros || script_print_error "ROS installation failed."
 
 
 # Add Individual Packages here
@@ -214,14 +214,14 @@ install_ros | script_print_error "ROS installation failed."
 # Do not know if it is an issue with the Xavier, test by commenting out
 # sudo c_rehash /etc/ssl/certs
 # Initialize rosdep
-install_rosdep | script_print_error "Installation & initialize rosdep failed."
+install_rosdep || script_print_error "Installation & initialize rosdep failed."
 
 
 # Environment Setup
-setup_environment | script_print_error "Setup environment failed."
+setup_environment || script_print_error "Setup environment failed."
 
 # Install rosinstall
-install_tools | script_print_error "Tools installation failed."
+install_tools || script_print_error "Tools installation failed."
 
-script_print_notify "Installation successfully done.\n\n"
+script_print_notify "All successfully done.\n\n"
 tput sgr0
