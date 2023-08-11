@@ -3,7 +3,11 @@ Install Robot Operating System (ROS) on NVIDIA Jetson AGX Xavier
 
 These scripts will install Robot Operating System (ROS) on the NVIDIA Jetson AGX Xavier Developer Kit.
 
-For L4T 35.4.1 (JetPack 5.1.2)
+For ***upper*** JetPack 5.0.2
+
+<strong>Tested:</strong>
+* L4T 35.1 (JetPack 5.0.2)
+* L4T 35.4.1 (JetPack 5.2.1)
 
 
 The script is based on the Ubuntu ARM install of ROS Noetic: http://wiki.ros.org/noetic/Installation/Ubuntu
@@ -57,7 +61,7 @@ $ sudo apt-key del 421C365BD9FF1F717815A3895523BAEEB01FA116
 
 ## Release Notes
 <strong>Aug 2023</strong>
-* L4T 35.4.1
+* L4T 35.1, 35.4.1
 * Change to support Noetic
 
 <strong>June 2019</strong>
