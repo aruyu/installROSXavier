@@ -195,10 +195,10 @@ if [ $hasBasePackage == false ] ; then
 fi
 
 # Let's start installing!
-setup_repo || script_print_error "Setup repository failed."
+setup_repo || error_exit "Setup repository failed."
 
 # ROS Installation
-install_ros || script_print_error "ROS installation failed."
+install_ros || error_exit "ROS installation failed."
 
 
 # Add Individual Packages here
@@ -214,14 +214,14 @@ install_ros || script_print_error "ROS installation failed."
 # Do not know if it is an issue with the Xavier, test by commenting out
 # sudo c_rehash /etc/ssl/certs
 # Initialize rosdep
-install_rosdep || script_print_error "Installation & initialize rosdep failed."
+install_rosdep || error_exit "Installation & initialize rosdep failed."
 
 
 # Environment Setup
-setup_environment || script_print_error "Setup environment failed."
+setup_environment || error_exit "Setup environment failed."
 
 # Install rosinstall
-install_tools || script_print_error "Tools installation failed."
+install_tools || error_exit "Tools installation failed."
 
 script_print_notify "All successfully done.\n\n"
 tput sgr0
