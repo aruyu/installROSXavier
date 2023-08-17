@@ -78,10 +78,10 @@ fi
 DEFAULTDIR=~/catkin_ws
 CLDIR="$1"
 
-if [ ! -z "$CLDIR" ]; then 
+if [[ ! -z "$CLDIR" ]]; then
   DEFAULTDIR=~/"$CLDIR"
 fi
-if [ -e "$DEFAULTDIR" ] ; then
+if [[ -e "$DEFAULTDIR" ]]; then
   error_exit "$DEFAULTDIR already exists; No action taken."
 else 
   script_print_notify "Creating Catkin Workspace: $DEFAULTDIR\n"

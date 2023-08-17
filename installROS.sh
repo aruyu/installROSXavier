@@ -156,7 +156,7 @@ fi
 
 # Iterate through command line inputs
 packages=()
-while [ "$1" != "" ]; do
+while [[ "$1" != "" ]]; do
   case $1 in
     -p | --package )        shift
                             packages+=("$1")
@@ -171,7 +171,7 @@ while [ "$1" != "" ]; do
 done
 # Check to see if other packages were specified
 # If not, set the default base package
-if [ ${#packages[@]}  -eq 0 ] ; then
+if [[ ${#packages[@]}  -eq 0 ]]; then
   packages+="ros-noetic-ros-base"
 fi
 script_print_notify "Packages to install: "${packages[@]}"\n"
@@ -189,7 +189,7 @@ for package in "${packages[@]}"; do
     break
   fi
 done
-if [ $hasBasePackage == false ] ; then
+if [[ $hasBasePackage == false ]]; then
   should_install_packages
   exit 1
 fi
