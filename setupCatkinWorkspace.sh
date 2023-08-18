@@ -44,8 +44,7 @@ function error_exit()
 
 function setup_workspace()
 {
-  #source /opt/ros/noetic/setup.bash
-  eval "$(cat /opt/ros/noetic/setup.bash)"
+  . /opt/ros/noetic/setup.bash
 
   echo "$DEFAULTDIR"/src
   mkdir -p "$DEFAULTDIR"/src
@@ -60,7 +59,7 @@ function setup_enviroments()
   grep -q -F ' ROS_MASTER_URI' ~/.bashrc ||  echo 'export ROS_MASTER_URI=http://localhost:11311' | tee -a ~/.bashrc
   grep -q -F ' ROS_IP' ~/.bashrc ||  echo "export ROS_IP=$(hostname -I)" | tee -a ~/.bashrc
   echo "export LD_LIBRARY_PATH=/usr/local/lib:$LD_LIBRARY_PATH" >> ~/.bashrc
-  eval "$(cat ~/.bashrc | tail -n +10)"
+  . ~/.bashrc
 }
 
 
